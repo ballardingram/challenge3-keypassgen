@@ -1,4 +1,5 @@
-// Assignment code here
+// Creating Options for the Password Generator
+var optionsBtn = document.querySelector("#options");
 
 
 // Get references to the #generate element

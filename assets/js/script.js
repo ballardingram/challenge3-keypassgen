@@ -1,9 +1,10 @@
-//Character Array for Reference
+//Character array for reference by the password generator.
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/",":", ";", "<", "=", ">", "?"];
 var finalPassword = ""
 
+//Prompts for users to work through before receiving their password.
 var getpasswordLength = function () {
   var passLength = prompt("How long would you like your password?" +"\n" + "8 Character Minimum");
   return passLength;
@@ -19,6 +20,12 @@ var uppercase = function () {
   return uppercasePrompt;
 }
 
+var specialchar = function () {
+  var specialcharPrompt = confirm("Include special characters?" + "\n" + "Example: ! @ # $ % ^ & *")
+  return specialcharPrompt;
+}
+
+//Math and process code for the random generator.
 var createRandomNumber = function() {
   var randomNumber = Math.floor(Math.random() * letters.length)
   return randomNumber;
@@ -40,6 +47,14 @@ var uppercasePicker = function(num) {
   }
 }
 
+var specialcharPicker = function(num) {
+  var fractionalNum = num / 4;
+  while(fractionalNum > 0) {
+    finalPassword += specialCharacters[createRandomNumber()];
+    fractionalNum--
+  }
+}
+
 function generatePassword() {
   var passwordLength = getpasswordLength();
   lowercase();
@@ -54,6 +69,12 @@ function generatePassword() {
   uppercasePicker(passwordLength);
   uppercasePicker(passwordLength);
   uppercasePicker(passwordLength);
+  specialchar();
+  specialcharPicker(passwordLength);
+  specialcharPicker(passwordLength);
+  specialcharPicker(passwordLength);
+  specialcharPicker(passwordLength);
+  specialcharPicker(passwordLength);
   checkFinalPassword(passwordLength);
   console.log(finalPassword);
 }

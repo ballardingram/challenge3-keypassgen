@@ -1,7 +1,7 @@
 //Character Array for Reference
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = [];
-var specialCharacters = [];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/",":", ";", "<", "=", ">", "?"];
 var finalPassword = ""
 
 var getpasswordLength = function () {
@@ -12,6 +12,11 @@ var getpasswordLength = function () {
 var lowercase = function () {
   var lowercasePrompt = confirm("Include lower case characters?")
   return lowercasePrompt;
+}
+
+var uppercase = function () {
+  var uppercasePrompt = confirm("Include upper case characters?")
+  return uppercasePrompt;
 }
 
 var createRandomNumber = function() {
@@ -27,6 +32,14 @@ var lowerCasePicker = function(num) {
   }
 }
 
+var uppercasePicker = function(num) {
+  var fractionalNum = num / 4;
+  while(fractionalNum > 0) {
+    finalPassword += letters[createRandomNumber()].toUpperCase();
+    fractionalNum--
+  }
+}
+
 function generatePassword() {
   var passwordLength = getpasswordLength();
   lowercase();
@@ -35,6 +48,12 @@ function generatePassword() {
   lowerCasePicker(passwordLength);
   lowerCasePicker(passwordLength);
   lowerCasePicker(passwordLength);
+  uppercase();
+  uppercasePicker(passwordLength);
+  uppercasePicker(passwordLength);
+  uppercasePicker(passwordLength);
+  uppercasePicker(passwordLength);
+  uppercasePicker(passwordLength);
   checkFinalPassword(passwordLength);
   console.log(finalPassword);
 }
@@ -43,8 +62,8 @@ var checkFinalPassword = function(num) {
 if (finalPassword.length > num) {
 var finalPasswordTrim = finalPassword.substring(0, parseInt(num));
 finalPassword = finalPasswordTrim;
+  }
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");

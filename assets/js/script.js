@@ -25,6 +25,11 @@ var specialchar = function () {
   return specialcharPrompt;
 }
 
+var digits = function () {
+  var digitPrompt = confirm("Include numbers?" + "\n" + "Example: 0 1 2 3 4 5 6 7 8 9")
+  return digitPrompt;
+}
+
 //Math and process code for the random generator.
 var createRandomNumber = function() {
   var randomNumber = Math.floor(Math.random() * letters.length)
@@ -55,6 +60,14 @@ var specialcharPicker = function(num) {
   }
 }
 
+var digitPicker = function(num) {
+  var fractionalNum = num / 4;
+  while(fractionalNum > 0) {
+    finalPassword += numbers[createRandomNumber()];
+    fractionalNum--
+  }
+}
+
 function generatePassword() {
   var passwordLength = getpasswordLength();
   lowercase();
@@ -75,6 +88,12 @@ function generatePassword() {
   specialcharPicker(passwordLength);
   specialcharPicker(passwordLength);
   specialcharPicker(passwordLength);
+  digits();
+  digitPicker(passwordLength);
+  digitPicker(passwordLength);
+  digitPicker(passwordLength);
+  digitPicker(passwordLength);
+  digitPicker(passwordLength);
   checkFinalPassword(passwordLength);
   console.log(finalPassword);
 }
@@ -87,7 +106,7 @@ finalPassword = finalPasswordTrim;
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector(finalPassword);
 
 // Write password to the #password input
 function writePassword() {

@@ -20,4 +20,4 @@ A lot of the Java Script code was copied and pasted to get the overall structure
 I am struggling with getting the final password to display in the mainbox for the user to copy. I'm going to keep researching this before submitting as my final work.
 
 ## Screenshots
-Below are screenshots of the final product:
+Below are screenshots of the final product with a gif to demonstrate the product:
